@@ -159,10 +159,15 @@ function ObjectToHtml(user){
 //   this.tagName = tagName || 'div';
 //   this.node = document.createElement(tagName);
 // }
-
 // Пример вызова:
-
 // const comp = new Component('span');
+
+class Component {
+    constructor(tagName) {
+        this.tagName = tagName || 'div';
+        this.node = document.createElement(tagName);
+    }
+}
 
 //--------------------
 // 2. Реализовать конструктор и методы в ES6 синтаксисе:
@@ -176,8 +181,62 @@ function ObjectToHtml(user){
 //   this.node.textContent = text;
 // };
 
+class Component2 {
+    constructor(tagName) {
+        this.tagName = tagName || 'div';
+        this.node = document.createElement(tagName);
+    }
+    setText(text) {
+        this.node.textContent = text;
+    }
+}
+
+const comp = new Component2('span');
+comp.setText("hello");
 
 //--------------------
 // 3. Создать класс калькулятора который будет принимать стартовое значение и у него 
 // будут методы сложить, вычесть, умножить , разделить. Также у него должны быть 
 // геттер и сеттер для получения и установки текущего числа с которым производятся вычисления.
+
+class Calc {
+    constructor(number) {
+        if (check(number)) return console.error('Error');
+        this.number = number || 0;
+    }
+
+    get myVal() {
+        return this.number;
+    }
+
+    set myVal(newNumber) {
+        if (check(newNumber)) return console.error('Error');
+
+        this.number = newNumber;
+    }
+
+    plus(number) {
+        if (check(number)) return console.error('Error');
+        this.number += number
+    }
+
+    minus(number) {
+        if (check(number)) return console.error('Error');
+        this.number -= number
+    }
+
+    multiply(number) {
+        if (check(number)) return console.error('Error');
+        this.number *= number
+    }
+
+    divide(number) {
+        if (check(number)) return console.error('Error');
+        this.number /= number
+    }
+}
+const check = (value) => {
+        if (typeof value !== 'number') return true;
+        if (isNaN(value)) return true;
+        return false;
+};
